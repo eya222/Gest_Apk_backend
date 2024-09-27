@@ -110,12 +110,13 @@ async uploadFile(
   
   @UploadedFiles() files: { apk?: Express.Multer.File[], document?: Express.Multer.File[], demo?: Express.Multer.File[], photos?: Express.Multer.File[] },@Body() body:any
 ) {
-  const app= this.applicationsService.addUpdate(appId,  files, body );
-  return {
+  const app= await this.applicationsService.addUpdate(appId,  files, body );
+  console.log("lalalal")
+   return {
     success: true,
     message: 'Files uploaded successfully',
     application: app
-  }; // Explicit success response
+  };
 }
 
     }
